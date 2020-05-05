@@ -1,0 +1,32 @@
+{
+  "name": "Tori",
+  "version": "0.1",
+  "description": "Gotta identify 'em all!",
+  "author": "",
+  "permissions": [
+    "activeTab",
+    "declarativeContent",
+    "webRequest",
+    "webRequestBlocking",
+    "<all_urls>",
+    "storage",
+    "tabs"
+  ],
+  "background": {
+    "scripts": ["src/background.js"],
+    "persistent": true
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "http://www.wikiaves.com.br/*",
+        "https://www.wikiaves.com.br/*"
+      ],
+      "js": ["src/content.js"],
+      "all_frames": true,
+      "run_at": "document_start"
+    }
+  ],
+  "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'",
+  "manifest_version": 2
+}
