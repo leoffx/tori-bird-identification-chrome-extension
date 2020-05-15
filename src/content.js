@@ -9,8 +9,16 @@ const setImageTitles = () => {
     for (i = 0; i < images.length; i++) {
       var img = images[i];
       if (img.src === meta.url) {
-        img.title =
-          img.src + `:\n\n${img.title}\n\n` + JSON.stringify(meta.predictions);
+        var divtest = document.createElement("div");
+        divtest.innerHTML = JSON.stringify(meta.predictions);
+        divtest.style.position = "relative";
+        divtest.style.top = "1ex";
+        divtest.style.left = "1ex";
+        divtest.style.borderRadius = "1em";
+        divtest.style.border = "solid thin gray";
+        divtest.style.backgroundColor = "white";
+        img.parentElement.appendChild(divtest);
+        //img.title = img.src + `:\n\n${img.title}\n\n` + JSON.stringify(meta.predictions);
         delete keys[u];
         delete imageMeta[url];
       }
